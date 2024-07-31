@@ -11,6 +11,8 @@ public class Main {
         System.out.println("Welcome to classic european roulette");
         System.out.println("Your account balance is: " + myAccount.getAccountBalance());
         System.out.println("=============================");
+
+        System.out.println("Pusty commit");
         int bet;
         int drawnNumber;
         int actions;
