@@ -1,4 +1,4 @@
-package Roulette;
+package pl.lelakk.roulette;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -11,8 +11,6 @@ public class Main {
         System.out.println("Welcome to classic european roulette");
         System.out.println("Your account balance is: " + myAccount.getAccountBalance());
         System.out.println("=============================");
-
-        System.out.println("Pusty commit");
         int bet;
         int drawnNumber;
         int actions;
@@ -33,11 +31,11 @@ public class Main {
                 case 1:
                     System.out.println("Enter the amount of bet");
                     bet = type.nextInt();
-                    if (bet > myAccount.getAccountBalance() || bet<0) {
+                    if (bet > myAccount.getAccountBalance() || bet<=0) {
                         do {
                             System.out.println("Enter the correct amount of bet");
                             bet = type.nextInt();
-                        } while (bet > myAccount.accountBalance() || bet<0);
+                        } while (bet > myAccount.getAccountBalance() || bet<0);
                     }
                     myAccount.setAccountBalance(myAccount.getAccountBalance()-bet);
                     System.out.println("Choose the color you want to bet on: green, red or black");
@@ -60,25 +58,17 @@ public class Main {
                         bet = bet * 36;
                         System.out.println("You won " + bet + " dollars");
                         myAccount.setAccountBalance(myAccount.getAccountBalance() + bet);
-                        bet = 0;
-                    } else if (drawnNumber == 0) {
-                        bet = 0;
-                        System.out.println("You lost, the color was " + color);
                     } else if (drawnNumber % 2 == 1 && colorBet.equals("red")) {
                         bet = bet * 2;
                         System.out.println("You won " + bet + " dollars");
                         myAccount.setAccountBalance(myAccount.getAccountBalance() + bet);
-                        bet = 0;
-                    } else if (drawnNumber % 2 == 1 && !colorBet.equals("red")) {
-                        bet = 0;
-                        System.out.println("You lost, the color was " + color);
-                    } else if (drawnNumber % 2 == 0 && colorBet.equals("black")) {
+                    }
+                    else if (drawnNumber % 2 == 0 && colorBet.equals("black")) {
                         bet = bet * 2;
                         System.out.println("You won " + bet + " dollars");
                         myAccount.setAccountBalance(myAccount.getAccountBalance() + bet);
-                        bet = 0;
-                    } else if (drawnNumber % 2 == 0 && !colorBet.equals("black")) {
-                        bet = 0;
+                    }
+                    else {
                         System.out.println("You lost, the color was " + color);
                     }
                     break;
